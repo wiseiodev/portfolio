@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 
+import { Analytics } from '@vercel/analytics/react';
 import { Inter as FontSans } from 'next/font/google';
 import type { Metadata } from 'next';
 import { ResponsiveHeader } from '@/components/responsive-header';
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </footer>
           </div>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
