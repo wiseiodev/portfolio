@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { ResponsiveHeader } from '@/components/responsive-header';
 import { RootLayoutProps } from '@/types/layout';
 import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 
 const fontSans = FontSans({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <main className='flex-grow container mx-auto px-4 py-8'>
               {children}
             </main>
+            <Toaster />
             <footer className='border-t'>
               <div className='container mx-auto px-4 py-4 text-center'>
                 © {new Date().getFullYear()} Dan Wise. All rights reserved.

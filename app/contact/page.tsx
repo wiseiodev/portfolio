@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Card,
   CardContent,
@@ -11,8 +13,57 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useState } from 'react';
+import { useToast } from '@/components/ui/use-toast';
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: 'Message sent!',
+          description:
+            "Thank you for your message. We'll get back to you soon.",
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to send message. Please try again later.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className='container mx-auto px-4 py-8'>
       <h1 className='text-3xl font-bold mb-8'>Contact Me</h1>
@@ -25,33 +76,48 @@ export default function ContactPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form className='space-y-4'>
+            <form
+              onSubmit={handleSubmit}
+              className='space-y-4'>
               <div className='space-y-2'>
                 <Label htmlFor='name'>Name</Label>
                 <Input
                   id='name'
+                  name='name'
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder='Your name'
+                  required
                 />
               </div>
               <div className='space-y-2'>
                 <Label htmlFor='email'>Email</Label>
                 <Input
                   id='email'
+                  name='email'
                   type='email'
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder='Your email address'
+                  required
                 />
               </div>
               <div className='space-y-2'>
                 <Label htmlFor='message'>Message</Label>
                 <Textarea
                   id='message'
+                  name='message'
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder='Your message'
+                  required
                 />
               </div>
               <Button
                 type='submit'
-                className='w-full'>
-                Send Message
+                className='w-full'
+                disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </CardContent>
@@ -67,7 +133,7 @@ export default function ContactPage() {
             <div className='space-y-4'>
               <div className='flex items-center space-x-2'>
                 <Mail className='h-5 w-5 text-muted-foreground' />
-                <span>daniel@wiseio.dev</span>
+                <span>hi@danwise.dev</span>
               </div>
               <div className='flex items-center space-x-2'>
                 <Phone className='h-5 w-5 text-muted-foreground' />
