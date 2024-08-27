@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useEnterSubmit } from '@/hooks/use-enter-submit';
 import { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -24,6 +25,7 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { formRef, onKeyDown } = useEnterSubmit();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -78,6 +80,7 @@ export default function ContactPage() {
           <CardContent>
             <form
               onSubmit={handleSubmit}
+              ref={formRef}
               className='space-y-4'>
               <div className='space-y-2'>
                 <Label htmlFor='name'>Name</Label>
@@ -86,6 +89,7 @@ export default function ContactPage() {
                   name='name'
                   value={formData.name}
                   onChange={handleChange}
+                  onKeyDown={onKeyDown}
                   placeholder='Your name'
                   required
                 />
@@ -98,6 +102,7 @@ export default function ContactPage() {
                   type='email'
                   value={formData.email}
                   onChange={handleChange}
+                  onKeyDown={onKeyDown}
                   placeholder='Your email address'
                   required
                 />
@@ -109,6 +114,7 @@ export default function ContactPage() {
                   name='message'
                   value={formData.message}
                   onChange={handleChange}
+                  onKeyDown={onKeyDown}
                   placeholder='Your message'
                   required
                 />
