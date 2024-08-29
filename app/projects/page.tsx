@@ -5,20 +5,66 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { ExternalLink, Github } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
 const projects = [
   {
-    title: 'Best Western® Serverless Migration',
+    title: 'Personal Portfolio Website',
     description:
-      'Led the migration of a legacy application from Elastic Beanstalk to a complete serverless architecture on AWS.',
+      'Designed and developed a modern, responsive portfolio website to showcase professional experience and projects.',
     achievements: [
-      'Migrated Ruby on Rails API to GraphQL Apollo Server API on AWS Lambda',
-      'Moved React client application to S3/CloudFront',
-      'Transitioned from standalone RDS Postgres to RDS Serverless cluster',
-      'Improved application performance and reduced monthly costs by 50%',
+      'Implemented a sleek, user-friendly design using Next.js and Tailwind CSS',
+      'Integrated dynamic content management for easy updates and maintenance',
+      'Optimized performance and accessibility to ensure a great user experience across devices',
+      'Implemented serverless functions for backend operations like contact form submission',
+    ],
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Vercel',
+      'AWS Lambda',
+    ],
+    repoUrl: 'https://github.com/wiseiodev/portfolio',
+    siteUrl: 'https://danwise.dev',
+  },
+  {
+    title: 'Mary Woodward PSO Dynamic Calendar Application',
+    description:
+      "Developed a modern, serverless calendar application for Mary Woodward Parent Support Organization (PSO) that transforms the school's public Google Calendar into an interactive, user-friendly interface for parents and staff.",
+    achievements: [
+      "Architected and implemented a serverless application using SST (Serverless Stack) and AWS services to fetch and process iCal data from the PSO's public Google Calendar",
+      'Created a responsive, dynamic web interface that displays up-to-date school events in an easily digestible format',
+      'Implemented a feature allowing users to download a PDF version of the calendar for offline access',
+      'Designed the application to be embeddable within the existing PSO website, ensuring seamless integration',
+    ],
+    technologies: [
+      'SST (Serverless Stack)',
+      'AWS Lambda',
+      'AWS CDK',
+      'TypeScript',
+      'React',
+      'Node.js',
+      'date-fns-tz',
+      'iCal processing',
+      'PDF generation',
+    ],
+    repoUrl: 'https://github.com/mwpso/calendar',
+    siteUrl: 'https://marywoodwardpso.com/pso-event-calendar',
+  },
+  {
+    title: 'Enterprise Application Serverless Migration',
+    description:
+      'Led the migration of a legacy application to a complete serverless architecture on AWS, significantly improving performance and reducing costs.',
+    achievements: [
+      'Migrated monolithic API to a GraphQL-based microservices architecture on AWS Lambda',
+      'Implemented a modern React-based frontend hosted on AWS S3 and CloudFront',
+      'Transitioned from traditional RDS to a serverless database solution',
+      'Achieved 50% reduction in monthly infrastructure costs while improving application performance',
     ],
     technologies: [
       'AWS Lambda',
@@ -29,28 +75,32 @@ const projects = [
       'CloudFront',
       'RDS Serverless',
     ],
+    repoUrl: null,
+    siteUrl: null,
   },
   {
-    title: 'Revcaster - Hotel Rate Shopping Tool',
+    title: 'B2B SaaS Platform for Hospitality Industry',
     description:
-      'Co-founded and developed a B2B SaaS solution that became a market leader in hotel rate shopping tools.',
+      'Co-founded and developed a B2B SaaS solution that became a market leader in providing real-time market data for the hospitality sector.',
     achievements: [
-      'Acquired over 3,000 customers within 30 days post-launch',
-      'Developed a powerful rate shopping tool using AWS, Ruby on Rails, and PostgreSQL',
-      'Established Revcaster as the go-to solution for real-time, actionable market data for hoteliers',
-      'Positioned the company for a successful acquisition',
+      'Rapidly grew customer base to over 3,000 within the first month of launch',
+      'Architected a scalable backend using AWS, Ruby on Rails, and PostgreSQL',
+      'Developed innovative algorithms for real-time data analysis and reporting',
+      'Successfully positioned the company for acquisition through consistent growth and market leadership',
     ],
     technologies: ['AWS', 'Ruby on Rails', 'PostgreSQL', 'SaaS'],
+    repoUrl: null,
+    siteUrl: null,
   },
   {
-    title: 'Best Western Dashboard Application',
+    title: 'Data Centralization and Analytics Dashboard',
     description:
-      'Designed and implemented a comprehensive dashboard application for Best Western to centralize data and improve decision-making.',
+      'Designed and implemented a comprehensive dashboard application to centralize data from multiple sources and improve decision-making processes.',
     achievements: [
-      'Developed a web-crawler using Ruby on Rails and Sidekiq for efficient data collection',
-      'Implemented REST APIs to import clean data into internal tools and Excel',
-      'Converted Excel-based dashboards to a cloud-native application hosted on AWS',
-      'Enabled centralization of data and improved consistency in delivery',
+      'Developed an efficient web-crawler for automated data collection from various sources',
+      'Implemented RESTful APIs to integrate data with internal tools and Excel',
+      'Migrated from static Excel-based reporting to a dynamic, cloud-native application',
+      'Significantly improved data consistency and accessibility across the organization',
     ],
     technologies: [
       'Ruby on Rails',
@@ -59,22 +109,26 @@ const projects = [
       'AWS',
       'Excel Integration',
     ],
+    repoUrl: null,
+    siteUrl: null,
   },
   {
-    title: 'Multi-Account RDS Serverless Cluster',
+    title: 'Multi-Tenant Serverless Database Architecture',
     description:
-      'Designed and implemented a shared RDS Serverless Postgres cluster accessible by multiple applications across different AWS accounts.',
+      'Architected and implemented a shared serverless database cluster to support multiple applications across different cloud accounts, optimizing resource utilization and cost efficiency.',
     achievements: [
-      'Set up the cluster for both production and non-production environments',
-      'Enabled removal of multiple costly clusters',
-      'Facilitated migration of high-traffic queries',
-      'Improved overall database performance and reduced costs',
+      'Designed a scalable multi-tenant architecture supporting both production and non-production environments',
+      'Consolidated multiple database instances into a single, efficient cluster',
+      'Optimized high-traffic queries for improved performance across all tenants',
+      'Achieved significant cost savings and performance improvements through resource sharing and optimization',
     ],
     technologies: [
       'AWS RDS Serverless',
       'PostgreSQL',
       'Multi-Account Architecture',
     ],
+    repoUrl: null,
+    siteUrl: null,
   },
 ];
 
@@ -90,7 +144,24 @@ export default function ProjectsPage() {
             <CardHeader>
               <CardTitle className='flex items-center justify-between'>
                 {project.title}
-                <ExternalLink className='h-4 w-4 text-muted-foreground' />
+                <div className='flex flex-row space-x-2'>
+                  {project.siteUrl ? (
+                    <Link
+                      href={project.siteUrl}
+                      target='_blank'
+                      rel='noreferrer'>
+                      <ExternalLink className='h-4 w-4 text-muted-foreground' />
+                    </Link>
+                  ) : null}
+                  {project.repoUrl ? (
+                    <Link
+                      href={project.repoUrl}
+                      target='_blank'
+                      rel='noreferrer'>
+                      <Github className='h-4 w-4 text-muted-foreground' />
+                    </Link>
+                  ) : null}
+                </div>
               </CardTitle>
               <CardDescription>{project.description}</CardDescription>
             </CardHeader>
