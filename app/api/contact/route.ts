@@ -2,6 +2,7 @@ import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 
 import { ContactEmail } from '@/components/email/contact';
 import { NextResponse } from 'next/server';
+import { awsCredentialsProvider } from '@vercel/functions/oidc';
 import { render } from '@react-email/components';
 
 const SES_SENDER_EMAIL = 'contact@danwise.dev';
@@ -10,10 +11,9 @@ const DANIEL_EMAIL = 'hi@danwise.dev';
 // Initialize the SES client
 const sesClient = new SESClient({
   region: process.env.AWS_REGION,
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-  },
+  credentials: awsCredentialsProvider({
+    roleArn: process.env.AWS_ROLE_ARN!,
+  }),
 });
 
 export async function POST(req: Request) {
