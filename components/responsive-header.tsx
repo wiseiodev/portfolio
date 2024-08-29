@@ -1,12 +1,12 @@
 'use client';
 
+import { Github, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import logo from '@/assets/wiseio-logo.png';
 import logoSmall from '@/assets/wiseio-icon.png';
@@ -62,6 +62,17 @@ export function ResponsiveHeader() {
         {isMobile ? (
           <div className='flex items-center space-x-2'>
             <ThemeToggle />
+            <Link
+              href='https://github.com/wiseiodev/portfolio'
+              target='_blank'
+              rel='noopener noreferrer'>
+              <Button
+                variant='ghost'
+                size='icon'>
+                <Github className='h-5 w-5' />
+                <span className='sr-only'>GitHub</span>
+              </Button>
+            </Link>
             <Sheet>
               <SheetTrigger asChild>
                 <Button
@@ -72,7 +83,7 @@ export function ResponsiveHeader() {
                 </Button>
               </SheetTrigger>
               <SheetContent>
-                <nav className='flex flex-col space-y-4 pt-10'>
+                <nav className='flex flex-col space-y-4'>
                   <NavItems />
                 </nav>
               </SheetContent>
@@ -82,6 +93,17 @@ export function ResponsiveHeader() {
           <nav className='flex items-center space-x-4'>
             <NavItems />
             <ThemeToggle />
+            <Link
+              href='https://github.com/wiseiodev/portfolio'
+              target='_blank'
+              rel='noopener noreferrer'>
+              <Button
+                variant='ghost'
+                size='icon'>
+                <Github className='h-5 w-5' />
+                <span className='sr-only'>GitHub</span>
+              </Button>
+            </Link>
           </nav>
         )}
       </div>
