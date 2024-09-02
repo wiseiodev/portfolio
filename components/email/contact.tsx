@@ -6,7 +6,7 @@ import {
   Html,
   Row,
   Section,
-  Text,
+  Text
 } from '@react-email/components';
 
 type ContactEmailProps = {
@@ -17,12 +17,8 @@ type ContactEmailProps = {
 
 export function ContactEmail({ name, email, message }: ContactEmailProps) {
   return (
-    <Container
-      lang='en'
-      dir='ltr'>
-      <Heading
-        className='text-xl font-extrabold'
-        as='h2'>
+    <Container lang='en' dir='ltr'>
+      <Heading className='text-xl font-extrabold' as='h2'>
         New Web Page Message
       </Heading>
       <Section className='mt-8'>

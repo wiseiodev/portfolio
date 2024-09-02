@@ -5,11 +5,12 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from '@/components/ui/card';
 import { LetterText, Mail, MapPin, Phone } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { EmailLink } from '@/components/email/email-link';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
@@ -22,7 +23,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: '',
+    message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -43,14 +44,13 @@ export default function ContactPage() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
 
       if (response.ok) {
         toast({
           title: 'Message sent!',
-          description:
-            "Thank you for your message. We'll get back to you soon.",
+          description: "Thank you for your message. We'll get back to you soon."
         });
         setFormData({ name: '', email: '', message: '' });
       } else {
@@ -60,7 +60,7 @@ export default function ContactPage() {
       toast({
         title: 'Error',
         description: 'Failed to send message. Please try again later.',
-        variant: 'destructive',
+        variant: 'destructive'
       });
     } finally {
       setIsSubmitting(false);
@@ -69,8 +69,8 @@ export default function ContactPage() {
 
   return (
     <div className='container mx-auto px-4 py-8'>
-      <h1 className='text-3xl font-bold mb-8'>Contact Me</h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+      <h1 className='mb-8 text-3xl font-bold'>Contact Me</h1>
+      <div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
         <Card>
           <CardHeader>
             <CardTitle>Send a Message</CardTitle>
@@ -79,10 +79,7 @@ export default function ContactPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form
-              onSubmit={handleSubmit}
-              ref={formRef}
-              className='space-y-4'>
+            <form onSubmit={handleSubmit} ref={formRef} className='space-y-4'>
               <div className='space-y-2'>
                 <Label htmlFor='name'>Name</Label>
                 <Input
@@ -120,10 +117,7 @@ export default function ContactPage() {
                   required
                 />
               </div>
-              <Button
-                type='submit'
-                className='w-full'
-                disabled={isSubmitting}>
+              <Button type='submit' className='w-full' disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
@@ -140,7 +134,9 @@ export default function ContactPage() {
             <div className='space-y-4'>
               <div className='flex items-center space-x-2'>
                 <Mail className='h-5 w-5 text-muted-foreground' />
-                <span>hi@danwise.dev</span>
+                <span>
+                  <EmailLink subject='Your portfolio' />
+                </span>
               </div>
               <div className='flex items-center space-x-2'>
                 <Phone className='h-5 w-5 text-muted-foreground' />

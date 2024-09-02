@@ -1,0 +1,24 @@
+name,category_name,description,icon_url,color
+React,Frontend,A JavaScript library for building user interfaces,https://reactjs.org/favicon.ico,#61DAFB
+Next.js,Frontend,The React Framework for Production,https://nextjs.org/static/favicon/favicon-32x32.png,#000000
+Vue.js,Frontend,The Progressive JavaScript Framework,https://vuejs.org/images/logo.png,#4FC08D
+Angular,Frontend,Platform for building mobile and desktop web applications,https://angular.io/assets/images/logos/angular/angular.png,#DD0031
+Svelte,Frontend,Cybernetically enhanced web apps,https://svelte.dev/favicon.png,#FF3E00
+TypeScript,Language,Typed JavaScript at Any Scale,https://www.typescriptlang.org/favicon-32x32.png,#3178C6
+JavaScript,Language,High-level interpreted programming language,https://developer.mozilla.org/favicon-48x48.png,
+Python,Language,Interpreted high-level general-purpose programming language,https://www.python.org/static/favicon.ico,#3776AB
+Ruby,Language,A dynamic open source programming language,https://www.ruby-lang.org/favicon.ico,#CC342D
+Go,Language,Open source programming language that makes it easy to build simple reliable and efficient software,https://golang.org/lib/godoc/images/go-logo-blue.svg,#00ADD8
+Rust,Language,A language empowering everyone to build reliable and efficient software,https://www.rust-lang.org/favicon.ico,#000000
+Node.js,Backend,JavaScript runtime built on Chrome's V8 JavaScript engine,https://nodejs.org/static/images/logo.svg,#339933
+Express.js,Backend,Fast unopinionated minimalist web framework for Node.js,https://expressjs.com/images/favicon.png,#000000
+Django,Backend,The web framework for perfectionists with deadlines,https://www.djangoproject.com/favicon.ico,#092E20
+Ruby on Rails,Backend,Web application framework written in Ruby,https://rubyonrails.org/favicon.ico,#CC0000
+ASP.NET Core,Backend,Free. Cross-platform. Open source. A framework for building web apps and services with .NET and C#,https://dotnet.microsoft.com/static/images/favicon.ico,#512BD4
+Spring Boot,Backend,Java-based framework used to create micro Services,https://spring.io/favicon.ico,#6DB33F
+PostgreSQL,Database,The World's Most Advanced Open Source Relational Database,https://www.postgresql.org/favicon.ico,#336791
+MySQL,Database,The world's most popular open source database,https://labs.mysql.com/common/themes/sakila/favicon.ico,#4479A1
+MongoDB,Database,The database for modern applications,https://www.mongodb.com/assets/images/global/favicon.ico,#47A248
+Redis,Database,Open source in-memory data structure store,https://redis.io/images/favicon.png,#DC382D
+Elasticsearch,Database,Distributed RESTful search and analytics engine,https://www.elastic.co/favicon.ico,#005571
+Drizzle ORM,Database,TypeScript ORM for SQL databases,https://orm.drizzle.team/favicon.ico,#C5F74F

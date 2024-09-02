@@ -12,10 +12,11 @@ const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
       <div
         ref={ref}
         className={cn(
-          'w-full h-4 bg-secondary rounded-full overflow-hidden',
+          'h-4 w-full overflow-hidden rounded-full bg-secondary',
           className
         )}
-        {...props}>
+        {...props}
+      >
         <div
           className='h-full bg-primary transition-all duration-300 ease-in-out'
           style={{ width: `${value}%` }}
