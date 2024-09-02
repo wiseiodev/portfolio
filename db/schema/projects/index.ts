@@ -7,9 +7,9 @@ import {
   varchar
 } from 'drizzle-orm/pg-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
+import { projectTechnologies, technologies } from '@/db/schema';
 
 import { relations } from 'drizzle-orm';
-import { technologies } from '@/db/schema';
 import { z } from 'zod';
 
 export const projects = pgTable('projects', {
@@ -31,7 +31,7 @@ export const projects = pgTable('projects', {
 });
 
 export const projectsRelations = relations(projects, ({ one, many }) => ({
-  technologies: many(technologies)
+  technologies: many(projectTechnologies)
 }));
 
 export const ProjectSchema = createSelectSchema(projects);

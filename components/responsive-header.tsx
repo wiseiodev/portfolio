@@ -53,7 +53,8 @@ export function ResponsiveHeader() {
           <div className='flex items-center space-x-2'>
             <ThemeToggle />
             <Link
-              href='https://github.com/wiseiodev/portfolio'
+              href='https://github.com/dubscode'
+              aria-label='Personal GitHub'
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -81,7 +82,8 @@ export function ResponsiveHeader() {
             <NavItems />
             <ThemeToggle />
             <Link
-              href='https://github.com/wiseiodev/portfolio'
+              href='https://github.com/dubscode'
+              aria-label='Personal GitHub'
               target='_blank'
               rel='noopener noreferrer'
             >
