@@ -9,7 +9,7 @@ import logo from '@/assets/wiseio-logo.png';
 
 export default function Home() {
   return (
-    <div className='container mx-auto px-4 py-12 flex flex-col items-center'>
+    <div className='container mx-auto flex flex-col items-center px-4 py-12'>
       <Image
         priority
         src={logo}
@@ -18,19 +18,19 @@ export default function Home() {
         height={100}
         className='mb-8'
       />
-      <h1 className='text-4xl font-bold text-center mb-4'>
+      <h1 className='mb-4 text-center text-4xl font-bold'>
         Welcome to DanWise.Dev
       </h1>
-      <p className='text-xl text-center text-muted-foreground mb-8 max-w-2xl'>
+      <p className='mb-8 max-w-2xl text-center text-xl text-muted-foreground'>
         Innovative solutions in hospitality technology, serverless architecture,
         and cloud computing.
       </p>
 
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 w-full max-w-4xl'>
+      <div className='mb-12 grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-3'>
         <Card>
           <CardContent className='flex flex-col items-center p-6'>
-            <Server className='h-12 w-12 text-primary mb-4' />
-            <h2 className='text-xl font-semibold mb-2'>Cloud Expertise</h2>
+            <Server className='mb-4 h-12 w-12 text-primary' />
+            <h2 className='mb-2 text-xl font-semibold'>Cloud Expertise</h2>
             <p className='text-center text-muted-foreground'>
               Specializing in AWS and serverless architectures
             </p>
@@ -38,8 +38,8 @@ export default function Home() {
         </Card>
         <Card>
           <CardContent className='flex flex-col items-center p-6'>
-            <Code className='h-12 w-12 text-primary mb-4' />
-            <h2 className='text-xl font-semibold mb-2'>
+            <Code className='mb-4 h-12 w-12 text-primary' />
+            <h2 className='mb-2 text-xl font-semibold'>
               Full-Stack Development
             </h2>
             <p className='text-center text-muted-foreground'>
@@ -49,8 +49,8 @@ export default function Home() {
         </Card>
         <Card>
           <CardContent className='flex flex-col items-center p-6'>
-            <Users className='h-12 w-12 text-primary mb-4' />
-            <h2 className='text-xl font-semibold mb-2'>Leadership</h2>
+            <Users className='mb-4 h-12 w-12 text-primary' />
+            <h2 className='mb-2 text-xl font-semibold'>Leadership</h2>
             <p className='text-center text-muted-foreground'>
               Guiding teams to deliver exceptional results
             </p>
@@ -58,7 +58,7 @@ export default function Home() {
         </Card>
       </div>
 
-      <div className='flex flex-wrap justify-center gap-2 mb-8'>
+      <div className='mb-8 flex flex-wrap justify-center gap-2'>
         <Badge variant='secondary'>AWS</Badge>
         <Badge variant='secondary'>Serverless</Badge>
         <Badge variant='secondary'>React</Badge>
@@ -67,9 +67,7 @@ export default function Home() {
         <Badge variant='secondary'>PostgreSQL</Badge>
       </div>
 
-      <Button
-        asChild
-        size='lg'>
+      <Button asChild size='lg'>
         <Link href='/projects'>
           Explore My Projects <ArrowRight className='ml-2 h-4 w-4' />
         </Link>

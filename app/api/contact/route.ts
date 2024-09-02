@@ -12,8 +12,8 @@ const DANIEL_EMAIL = 'hi@danwise.dev';
 const sesClient = new SESClient({
   region: process.env.AWS_REGION,
   credentials: awsCredentialsProvider({
-    roleArn: process.env.AWS_ROLE_ARN!,
-  }),
+    roleArn: process.env.AWS_ROLE_ARN!
+  })
 });
 
 export async function POST(req: Request) {
@@ -21,30 +21,30 @@ export async function POST(req: Request) {
 
   const emailHtml = await render(ContactEmail({ name, email, message }));
   const plainText = await render(ContactEmail({ name, email, message }), {
-    plainText: true,
+    plainText: true
   });
 
   const params = {
     Source: SES_SENDER_EMAIL,
     Destination: {
-      ToAddresses: [DANIEL_EMAIL],
+      ToAddresses: [DANIEL_EMAIL]
     },
     ReplyToAddresses: [email],
     Message: {
       Subject: {
-        Data: `New contact form submission from ${name}`,
+        Data: `New contact form submission from ${name}`
       },
       Body: {
         Text: {
           Charset: 'UTF-8',
-          Data: plainText,
+          Data: plainText
         },
         Html: {
           Charset: 'UTF-8',
-          Data: emailHtml,
-        },
-      },
-    },
+          Data: emailHtml
+        }
+      }
+    }
   };
 
   try {

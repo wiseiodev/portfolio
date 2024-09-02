@@ -3,7 +3,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from '@/components/ui/card';
 
 import { Badge } from '@/components/ui/badge';
@@ -13,9 +13,9 @@ import wiseioIcon from '@/assets/wiseio-icon.png';
 export default function AboutPage() {
   return (
     <div className='container mx-auto px-4 py-8'>
-      <h1 className='text-3xl font-bold mb-8'>About Dan Wise</h1>
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-        <div className='md:col-span-2 space-y-6'>
+      <h1 className='mb-8 text-3xl font-bold'>About Dan Wise</h1>
+      <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
+        <div className='space-y-6 md:col-span-2'>
           <Card>
             <CardHeader>
               <CardTitle>Who I Am</CardTitle>
@@ -41,7 +41,7 @@ export default function AboutPage() {
               <CardDescription>Key roles and achievements</CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className='list-disc list-inside space-y-2 text-muted-foreground'>
+              <ul className='list-inside list-disc space-y-2 text-muted-foreground'>
                 <li>
                   Currently serving as Senior Engineering Manager at Best
                   Western® Hotels &amp; Resorts, leading critical technology
@@ -70,7 +70,7 @@ export default function AboutPage() {
               <CardDescription>Skills and technologies</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className='flex flex-wrap gap-2 mb-4'>
+              <div className='mb-4 flex flex-wrap gap-2'>
                 <Badge variant='secondary'>AWS</Badge>
                 <Badge variant='secondary'>Serverless Architecture</Badge>
                 <Badge variant='secondary'>GraphQL</Badge>
@@ -99,7 +99,7 @@ export default function AboutPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className='flex flex-col items-center'>
-              <div className='relative w-48 h-48 rounded-full overflow-hidden mb-4'>
+              <div className='relative mb-4 h-48 w-48 overflow-hidden rounded-full'>
                 <Image
                   src={wiseioIcon}
                   alt='Dan Wise'
@@ -108,10 +108,10 @@ export default function AboutPage() {
                 />
               </div>
               <div className='text-center'>
-                <p className='text-muted-foreground mb-2'>
+                <p className='mb-2 text-muted-foreground'>
                   Based in Portland, Oregon
                 </p>
-                <p className='text-muted-foreground mb-4'>
+                <p className='mb-4 text-muted-foreground'>
                   Driving innovation in hospitality tech
                 </p>
                 <div className='flex flex-wrap justify-center gap-2'>

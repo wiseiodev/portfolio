@@ -13,24 +13,16 @@ import logoSmall from '@/assets/wiseio-icon.png';
 
 const NavItems = () => (
   <>
-    <Button
-      variant='ghost'
-      asChild>
+    <Button variant='ghost' asChild>
       <Link href='/about'>About</Link>
     </Button>
-    <Button
-      variant='ghost'
-      asChild>
+    <Button variant='ghost' asChild>
       <Link href='/projects'>Projects</Link>
     </Button>
-    <Button
-      variant='ghost'
-      asChild>
+    <Button variant='ghost' asChild>
       <Link href='/skills'>Skills</Link>
     </Button>
-    <Button
-      variant='ghost'
-      asChild>
+    <Button variant='ghost' asChild>
       <Link href='/contact'>Contact</Link>
     </Button>
   </>
@@ -48,10 +40,8 @@ export function ResponsiveHeader() {
 
   return (
     <header className='border-b'>
-      <div className='container mx-auto px-4 py-4 flex justify-between items-center'>
-        <Link
-          href='/'
-          className='text-2xl font-bold'>
+      <div className='container mx-auto flex items-center justify-between px-4 py-4'>
+        <Link href='/' className='text-2xl font-bold'>
           <Image
             priority
             src={isMobile ? logoSmall : logo}
@@ -65,19 +55,16 @@ export function ResponsiveHeader() {
             <Link
               href='https://github.com/wiseiodev/portfolio'
               target='_blank'
-              rel='noopener noreferrer'>
-              <Button
-                variant='ghost'
-                size='icon'>
+              rel='noopener noreferrer'
+            >
+              <Button variant='ghost' size='icon'>
                 <Github className='h-5 w-5' />
                 <span className='sr-only'>GitHub</span>
               </Button>
             </Link>
             <Sheet>
               <SheetTrigger asChild>
-                <Button
-                  variant='ghost'
-                  size='icon'>
+                <Button variant='ghost' size='icon'>
                   <Menu className='h-6 w-6' />
                   <span className='sr-only'>Toggle menu</span>
                 </Button>
@@ -96,10 +83,9 @@ export function ResponsiveHeader() {
             <Link
               href='https://github.com/wiseiodev/portfolio'
               target='_blank'
-              rel='noopener noreferrer'>
-              <Button
-                variant='ghost'
-                size='icon'>
+              rel='noopener noreferrer'
+            >
+              <Button variant='ghost' size='icon'>
                 <Github className='h-5 w-5' />
                 <span className='sr-only'>GitHub</span>
               </Button>

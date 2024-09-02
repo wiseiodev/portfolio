@@ -15,23 +15,20 @@ export default function ResumePage() {
     if (!resumeRef.current) return;
 
     generatePDF(resumeRef, {
-      filename: 'daniel-wise-resume.pdf',
+      filename: 'daniel-wise-resume.pdf'
     });
   };
 
   return (
     <div className='container mx-auto px-4 py-8'>
-      <div className='flex justify-between items-center mb-8'>
+      <div className='mb-8 flex items-center justify-between'>
         <h1 className='text-3xl font-bold'>Daniel Wise - Resume</h1>
         <Button onClick={downloadPDF}>
           <Download className='mr-2 h-4 w-4' /> Download PDF
         </Button>
       </div>
 
-      <div
-        ref={resumeRef}
-        id='resume-content'
-        className='space-y-6'>
+      <div ref={resumeRef} id='resume-content' className='space-y-6'>
         <Card>
           <CardHeader>
             <CardTitle>Contact Information</CardTitle>
@@ -43,7 +40,8 @@ export default function ResumePage() {
                 href='https://www.linkedin.com/in/danielwise'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-primary hover:underline'>
+                className='text-primary hover:underline'
+              >
                 LinkedIn
               </a>
             </p>
@@ -92,7 +90,7 @@ export default function ResumePage() {
             <CardTitle>Technical Proficiencies</CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className='list-disc pl-5 space-y-2'>
+            <ul className='list-disc space-y-2 pl-5'>
               <li>
                 <strong>Core Backend Technologies:</strong> Ruby on Rails,
                 NodeJS, AWS Lambda, Postgres, GraphQL, RESTful APIs, RDS
@@ -132,7 +130,7 @@ export default function ResumePage() {
               <p className='text-sm text-muted-foreground'>
                 Best Western Hotels – Phoenix, AZ | May 2022 – Present
               </p>
-              <ul className='list-disc pl-5 mt-2'>
+              <ul className='mt-2 list-disc pl-5'>
                 <li>
                   Led diverse and globally distributed teams to enhance
                   operational efficiency
@@ -158,7 +156,7 @@ export default function ResumePage() {
               <p className='text-sm text-muted-foreground'>
                 Wise Revenue Management – Portland, OR | January 2013 – May 2022
               </p>
-              <ul className='list-disc pl-5 mt-2'>
+              <ul className='mt-2 list-disc pl-5'>
                 <li>
                   Developed Ruby on Rails-based backend for web-crawling and
                   Sidekiq queue system
@@ -174,7 +172,7 @@ export default function ResumePage() {
               <p className='text-sm text-muted-foreground'>
                 Revcaster – Portland, OR | January 2012 – February 2018
               </p>
-              <ul className='list-disc pl-5 mt-2'>
+              <ul className='mt-2 list-disc pl-5'>
                 <li>
                   Employed AWS, Ruby on Rails, and Postgres for robust backend
                   development
