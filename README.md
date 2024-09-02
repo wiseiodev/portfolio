@@ -19,6 +19,7 @@ Welcome to my personal portfolio repository! This project showcases my skills, p
 
 - `app/` - Next.js app directory containing page components and routing
 - `components/` - Reusable React components
+- `db/` - Database schema and connection
 - `lib/` - Utility functions and custom hooks
 - `public/` - Static assets
 - `styles/` - Global styles and Tailwind CSS configuration
@@ -106,6 +107,67 @@ To set these locally for development:
 **Note:** Never commit your `.env.local` file or expose your AWS credentials publicly.
 
 For production deployment, set these environment variables in your hosting platform's settings.
+
+## 🗄️ Database Integration
+
+This portfolio uses [Drizzle ORM](https://orm.drizzle.team/) and [Vercel DB](https://vercel.com/docs/storage/vercel-postgres) for database management.
+
+### Setting Up the Database
+
+1. Ensure you have the necessary environment variables set up in your `.env.local` file:
+
+```
+POSTGRES_URL=your-postgres-url
+```
+
+2. The database schema is defined using Drizzle ORM in the [`db/schema`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fwise%2Fdev%2Fwiseio%2Fdb%2Fschema%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D '/Users/wise/dev/wiseio/db/schema') directory. For example, the [technologies schema](db/schema/technologies/index.ts) and [projects schema](db/schema/projects/index.ts).
+
+3. To generate and run migrations, use the following commands:
+
+```bash
+npm run db:generate
+npm run db:migrate
+```
+
+4. To seed the database with initial data, use:
+
+```bash
+npm run db:seed
+```
+
+This will add technology and categories, as well as my initial projects, which you can erase or use as a sample to guide you.
+
+### Database Configuration
+
+The database configuration is defined in [`drizzle.config.ts`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fwise%2Fdev%2Fwiseio%2Fdrizzle.config.ts%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D '/Users/wise/dev/wiseio/drizzle.config.ts'):
+
+```ts
+import '@/db/env-config';
+
+import { defineConfig } from 'drizzle-kit';
+
+export default defineConfig({
+  dialect: 'postgresql',
+  schema: './db/schema',
+  out: './db/migrations',
+  dbCredentials: {
+    url: process.env.POSTGRES_URL || 'no-db-url-found'
+  }
+});
+```
+
+### Database Connection
+
+The database connection is established db/index.ts:
+
+```ts
+import * as schema from '@/db/schema';
+
+import { drizzle } from 'drizzle-orm/vercel-postgres';
+import { sql } from '@vercel/postgres';
+
+export const db = drizzle(sql, { schema });
+```
 
 ## 🎨 Customization
 
