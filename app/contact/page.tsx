@@ -10,6 +10,7 @@ import {
 import { LetterText, Mail, MapPin, Phone } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { EmailLink } from '@/components/email/email-link';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
@@ -133,7 +134,9 @@ export default function ContactPage() {
             <div className='space-y-4'>
               <div className='flex items-center space-x-2'>
                 <Mail className='h-5 w-5 text-muted-foreground' />
-                <span>hi@danwise.dev</span>
+                <span>
+                  <EmailLink subject='Your portfolio' />
+                </span>
               </div>
               <div className='flex items-center space-x-2'>
                 <Phone className='h-5 w-5 text-muted-foreground' />

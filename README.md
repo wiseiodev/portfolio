@@ -21,6 +21,7 @@ Welcome to my personal portfolio repository! This project showcases my skills, p
 - `components/` - Reusable React components
 - `db/` - Database schema and connection
 - `lib/` - Utility functions and custom hooks
+- `models/` - This is where domain logic for accessing database models should reside
 - `public/` - Static assets
 - `styles/` - Global styles and Tailwind CSS configuration
 

@@ -25,6 +25,9 @@ const NavItems = () => (
     <Button variant='ghost' asChild>
       <Link href='/contact'>Contact</Link>
     </Button>
+    <Button variant='ghost' asChild>
+      <Link href='/resume'>Resume</Link>
+    </Button>
   </>
 );
 

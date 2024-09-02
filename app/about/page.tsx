@@ -100,12 +100,7 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent className='flex flex-col items-center'>
               <div className='relative mb-4 h-48 w-48 overflow-hidden rounded-full'>
-                <Image
-                  src={wiseioIcon}
-                  alt='Dan Wise'
-                  layout='fill'
-                  objectFit='cover'
-                />
+                <Image src={wiseioIcon} alt='Dan Wise Logo' />
               </div>
               <div className='text-center'>
                 <p className='mb-2 text-muted-foreground'>
