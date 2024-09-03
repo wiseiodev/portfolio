@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Menu } from 'lucide-react';
+import { Github, LinkedinIcon, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useEffect, useState } from 'react';
 
@@ -66,6 +66,17 @@ export function ResponsiveHeader() {
                 <span className='sr-only'>GitHub</span>
               </Button>
             </Link>
+            <Link
+              href='https://www.linkedin.com/in/danielwise/'
+              aria-label='Daniel Wise LinkedIn'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Button variant='ghost' size='icon'>
+                <LinkedinIcon className='h-5 w-5' />
+                <span className='sr-only'>GitHub</span>
+              </Button>
+            </Link>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant='ghost' size='icon'>
@@ -92,6 +103,17 @@ export function ResponsiveHeader() {
             >
               <Button variant='ghost' size='icon'>
                 <Github className='h-5 w-5' />
+                <span className='sr-only'>GitHub</span>
+              </Button>
+            </Link>
+            <Link
+              href='https://www.linkedin.com/in/danielwise/'
+              aria-label='Daniel Wise LinkedIn'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Button variant='ghost' size='icon'>
+                <LinkedinIcon className='h-5 w-5' />
                 <span className='sr-only'>GitHub</span>
               </Button>
             </Link>

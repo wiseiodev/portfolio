@@ -8,7 +8,7 @@ import {
   timestamp,
   varchar
 } from 'drizzle-orm/pg-core';
-import { categories, projectTechnologies, projects } from '@/db/schema';
+import { categories, projectTechnologies } from '@/db/schema';
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 
 import { relations } from 'drizzle-orm';

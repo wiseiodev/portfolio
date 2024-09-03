@@ -1,24 +1,35 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 import { ProgressBar } from '@/components/ui/progress-bar';
-import { skillCategories } from '@/lib/skills-data';
+import _ from 'lodash';
+import { action } from './actions/get-skills-action';
 
-export default function SkillsPage() {
+export default async function SkillsPage() {
+  const skills = await action();
+
+  const groupedSkills = _.groupBy(
+    skills,
+    (skill) => skill.technology.category.name
+  );
+
   return (
-    <div className='container mx-auto px-4 py-8'>
-      <h1 className='mb-8 text-3xl font-bold'>My Skills</h1>
-      <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-        {skillCategories.map((category) => (
-          <Card key={category.name}>
+    <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+      {Object.keys(groupedSkills).map((categoryName) => {
+        const skills = groupedSkills[categoryName];
+
+        return (
+          <Card key={categoryName}>
             <CardHeader>
-              <CardTitle>{category.name}</CardTitle>
+              <CardTitle>{categoryName}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className='space-y-4'>
-                {category.skills.map((skill) => (
-                  <li key={skill.name}>
+                {_.orderBy(skills, 'technology.name').map((skill) => (
+                  <li key={skill.id}>
                     <div className='mb-1 flex items-center justify-between'>
-                      <span className='text-sm font-medium'>{skill.name}</span>
+                      <span className='text-sm font-medium'>
+                        {skill.technology.name}
+                      </span>
                       <span className='text-sm font-medium text-muted-foreground'>
                         {skill.level}%
                       </span>
@@ -29,8 +40,8 @@ export default function SkillsPage() {
               </ul>
             </CardContent>
           </Card>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 }

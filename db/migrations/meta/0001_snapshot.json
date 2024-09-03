@@ -42,9 +42,7 @@
         "categories_name_unique": {
           "name": "categories_name_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "name"
-          ]
+          "columns": ["name"]
         }
       }
     },
@@ -232,12 +230,8 @@
           "name": "technologies_category_id_categories_id_fk",
           "tableFrom": "technologies",
           "tableTo": "categories",
-          "columnsFrom": [
-            "category_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["category_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -247,9 +241,7 @@
         "technologies_name_unique": {
           "name": "technologies_name_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "name"
-          ]
+          "columns": ["name"]
         }
       }
     },
@@ -307,12 +299,8 @@
           "name": "project_technologies_project_id_projects_id_fk",
           "tableFrom": "project_technologies",
           "tableTo": "projects",
-          "columnsFrom": [
-            "project_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["project_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -320,12 +308,8 @@
           "name": "project_technologies_technology_id_technologies_id_fk",
           "tableFrom": "project_technologies",
           "tableTo": "technologies",
-          "columnsFrom": [
-            "technology_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["technology_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -393,12 +377,8 @@
           "name": "skills_technology_id_technologies_id_fk",
           "tableFrom": "skills",
           "tableTo": "technologies",
-          "columnsFrom": [
-            "technology_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["technology_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
