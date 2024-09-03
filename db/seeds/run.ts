@@ -6,6 +6,7 @@ import {
   categories,
   projectTechnologies,
   projects,
+  skills,
   technologies
 } from '@/db/schema';
 import { eq, sql } from 'drizzle-orm';
@@ -17,12 +18,56 @@ import path from 'path';
 
 type TechnologyWithCategory = NewTechnology & { category_name: string };
 
+const skillCategories = [
+  {
+    name: 'Frontend Development',
+    skills: [
+      { name: 'Apollo Client', level: 85 },
+      { name: 'Data Grids', level: 95 },
+      { name: 'Next.js', level: 85 },
+      { name: 'React', level: 95 },
+      { name: 'Tailwind CSS', level: 90 },
+      { name: 'Tanstack Query (fka React Query)', level: 75 },
+      { name: 'TypeScript', level: 80 }
+    ]
+  },
+  {
+    name: 'Backend Development',
+    skills: [
+      { name: 'Apollo Server', level: 80 },
+      { name: 'GraphQL', level: 80 },
+      { name: 'MongoDB', level: 70 },
+      { name: 'Node.js', level: 85 },
+      { name: 'Postgres', level: 90 },
+      { name: 'REST APIs', level: 90 },
+      { name: 'Redis', level: 75 },
+      { name: 'Ruby on Rails', level: 85 },
+      { name: 'SQL', level: 70 },
+      { name: 'Serverless Infrastructure', level: 90 }
+    ]
+  },
+  {
+    name: 'DevOps & Cloud Providers',
+    skills: [
+      { name: 'AWS CDK', level: 90 },
+      { name: 'AWS Codepipelines', level: 80 },
+      { name: 'AWS', level: 99 },
+      { name: 'Azure', level: 60 },
+      { name: 'Git', level: 90 },
+      { name: 'Github Actions', level: 65 },
+      { name: 'SST', level: 80 },
+      { name: 'Vercel', level: 75 }
+    ]
+  }
+];
+
 async function seed() {
   console.log('Seeding database...');
 
   // Clear existing data
   await db.delete(projectTechnologies);
   await db.delete(projects);
+  await db.delete(skills);
   await db.delete(technologies);
   await db.delete(categories);
 
@@ -30,14 +75,19 @@ async function seed() {
   await db.execute(sql`ALTER SEQUENCE projects_id_seq RESTART WITH 1`);
   await db.execute(sql`ALTER SEQUENCE categories_id_seq RESTART WITH 1`);
   await db.execute(sql`ALTER SEQUENCE technologies_id_seq RESTART WITH 1`);
+  await db.execute(sql`ALTER SEQUENCE skills_id_seq RESTART WITH 1`);
 
-  const categoriesData = readCsvFile('categories.csv');
   const technologiesData: TechnologyWithCategory[] = readCsvFile('tech.csv');
 
   // Get all unique category names from technologies
   const uniqueCategories = new Set(
     technologiesData.map((tech) => tech.category_name)
   );
+
+  // Add skill categories to uniqueCategories
+  skillCategories.forEach((category) => {
+    uniqueCategories.add(category.name);
+  });
 
   // Insert categories
   const newCategories = Array.from(uniqueCategories).map((name) => ({ name }));
@@ -72,6 +122,36 @@ async function seed() {
   const techInsert = await db.insert(technologies).values(newTech).returning();
 
   console.log('Inserted technologies:', techInsert);
+
+  // Insert skills
+  for (const category of skillCategories) {
+    const categoryId = categoryInsert.find((c) => c.name === category.name)?.id;
+    if (!categoryId) {
+      throw new Error(`Category not found: ${category.name}`);
+    }
+
+    for (const skill of category.skills) {
+      const technology = techInsert.find((t) => t.name === skill.name);
+      let technologyId: number;
+
+      if (technology) {
+        technologyId = technology.id;
+      } else {
+        const newTechnology = await db
+          .insert(technologies)
+          .values({ name: skill.name, categoryId })
+          .returning();
+        technologyId = newTechnology[0].id;
+      }
+
+      await db.insert(skills).values({
+        technologyId,
+        level: skill.level
+      });
+    }
+  }
+
+  console.log('Inserted skills');
 
   // Seed projects
   const projectsData: NewProject[] = [

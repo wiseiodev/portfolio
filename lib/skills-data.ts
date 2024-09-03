@@ -40,3 +40,7 @@ export const skillCategories = [
     ]
   }
 ];
+
+export type SkillsCategories = typeof skillCategories;
+export type SkillCategory = (typeof skillCategories)[number];
+export type Skill = SkillCategory['skills'][number];
