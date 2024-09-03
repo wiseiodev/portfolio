@@ -1,5 +1,6 @@
 import {
   boolean,
+  integer,
   pgTable,
   serial,
   text,
@@ -23,6 +24,7 @@ export const projects = pgTable('projects', {
   startDate: timestamp('start_date'),
   endDate: timestamp('end_date'),
   isPublic: boolean('is_public').default(true).notNull(),
+  sortOrder: integer('sort_order').default(0).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at')
     .defaultNow()
