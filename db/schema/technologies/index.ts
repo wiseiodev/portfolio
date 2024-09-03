@@ -8,10 +8,11 @@ import {
   timestamp,
   varchar
 } from 'drizzle-orm/pg-core';
-import { categories, projectTechnologies, projects } from '@/db/schema';
+import { categories, projectTechnologies } from '@/db/schema';
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 
 import { relations } from 'drizzle-orm';
+import { skills } from '../skills';
 import { z } from 'zod';
 
 export const technologies = pgTable(
@@ -45,7 +46,8 @@ export const technologiesRelations = relations(
       fields: [technologies.categoryId],
       references: [categories.id]
     }),
-    projects: many(projectTechnologies)
+    projects: many(projectTechnologies),
+    skills: many(skills)
   })
 );
 
