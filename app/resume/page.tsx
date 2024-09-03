@@ -1,10 +1,11 @@
 'use client';
 
+import generatePDF, { Margin } from 'react-to-pdf';
+
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 import { EmailLink } from '@/components/email/email-link';
 import { SkillsSection } from '@/components/skills-section';
-import generatePDF from 'react-to-pdf';
 import { useRef } from 'react';
 
 export default function ResumePage() {
@@ -12,7 +13,14 @@ export default function ResumePage() {
 
   const downloadPDF = () => {
     if (!resumeRef.current) return;
-    generatePDF(resumeRef, { filename: 'daniel-wise-resume.pdf' });
+    generatePDF(resumeRef, {
+      method: 'save',
+      filename: 'daniel-wise-resume.pdf',
+      page: { margin: Margin.SMALL, format: 'letter', orientation: 'portrait' },
+      overrides: {
+        canvas: { windowWidth: 800, windowHeight: 800 }
+      }
+    });
   };
 
   return (
