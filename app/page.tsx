@@ -5,7 +5,16 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import logo from '@/assets/wiseio-logo.png';
+
+export const revalidate = 3600; // revalidate every hour
+
+export const metadata: Metadata = {
+  title: 'Dan Wise - Home',
+  description:
+    'Innovative solutions in hospitality technology, serverless architecture, and cloud computing.'
+};
 
 export default function Home() {
   return (

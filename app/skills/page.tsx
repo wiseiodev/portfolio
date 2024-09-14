@@ -1,11 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 import { ProgressBar } from '@/components/ui/progress-bar';
+import { Skill } from '@/models';
 import _ from 'lodash';
-import { action } from './actions/get-skills-action';
+
+export const revalidate = 3600; // revalidate every hour
+
+export async function generateStaticParams() {
+  const skills = await Skill.getSkills();
+  return skills;
+}
 
 export default async function SkillsPage() {
-  const skills = await action();
+  const skills = await Skill.getSkills();
 
   const groupedSkills = _.groupBy(
     skills,

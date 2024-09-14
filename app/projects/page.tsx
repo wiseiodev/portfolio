@@ -9,10 +9,17 @@ import { ExternalLink, Github } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { action } from './actions/get-projects-action';
+import { Project } from '@/models';
+
+export const revalidate = 3600; // revalidate every hour
+
+export async function generateStaticParams() {
+  const projects = await Project.getProjects();
+  return projects;
+}
 
 export default async function ProjectsPage() {
-  const projects = await action();
+  const projects = await Project.getProjects();
 
   return (
     <>
