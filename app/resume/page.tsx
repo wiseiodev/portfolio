@@ -16,9 +16,10 @@ export default function ResumePage() {
     generatePDF(resumeRef, {
       method: 'save',
       filename: 'daniel-wise-resume.pdf',
+      resolution: 2,
       page: { margin: Margin.SMALL, format: 'letter', orientation: 'portrait' },
       overrides: {
-        canvas: { windowWidth: 800, windowHeight: 800 }
+        canvas: { windowWidth: 900, windowHeight: 800 }
       }
     });
   };
@@ -52,7 +53,25 @@ export default function ResumePage() {
                 rel='noopener noreferrer'
                 className='text-blue-600 hover:underline'
               >
-                LinkedIn
+                https://www.linkedin.com/in/danielwise
+              </a>{' '}
+              <br />
+              <a
+                href='https://www.danwise.dev'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-blue-600 hover:underline'
+              >
+                https://www.danwise.dev
+              </a>{' '}
+              |{' '}
+              <a
+                href='https://github.com/dubscode'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-blue-600 hover:underline'
+              >
+                https://github.com/dubscode
               </a>
             </p>
           </section>
@@ -62,13 +81,14 @@ export default function ResumePage() {
               Professional Summary
             </h2>
             <p>
-              An innovative Senior Engineering Manager with a proven history of
-              leading high-performing, globally distributed teams, emphasizing
-              diversity and mentorship. Skilled in driving significant
-              technological initiatives to enhance operational efficiency and
-              cut costs through solutions like serverless architecture. Adept at
-              developing scalable, cloud-native software that improves
-              collaboration and user experience.
+              An accomplished Senior Full-Stack Engineer with extensive
+              experience in architecting and developing scalable, cloud-native
+              applications. Proficient in modern frontend and backend
+              technologies, including React, Next.js, Node.js, and AWS services.
+              Proven track record of implementing serverless architectures that
+              enhance performance and reduce costs by up to 70%. Passionate
+              about solving complex technical challenges and delivering
+              high-quality software solutions.
             </p>
           </section>
 
@@ -80,26 +100,31 @@ export default function ResumePage() {
             </h2>
             <div className='space-y-4'>
               <div>
-                <h3 className='font-semibold'>Senior Engineering Manager</h3>
+                <h3 className='font-semibold'>
+                  Senior Solutions Architect/Engineer
+                </h3>
                 <p className='italic'>
                   Best Western Hotels – Phoenix, AZ | May 2022 – Present
                 </p>
                 <ul className='mt-1 list-disc pl-5'>
                   <li>
-                    Led diverse and globally distributed teams to enhance
-                    operational efficiency
+                    <b>Architected</b> the migration of legacy applications to a
+                    serverless architecture using AWS Lambda, resulting in a 70%
+                    cost reduction.
                   </li>
                   <li>
-                    Spearheaded migration of legacy application to serverless
-                    architecture, resulting in 70% cost reduction
+                    <b>Implemented</b> a shared RDS Serverless PostgreSQL
+                    cluster across multiple AWS accounts, enhancing data
+                    consistency and scalability.
                   </li>
                   <li>
-                    Implemented shared RDS Serverless Postgres cluster across
-                    multiple AWS accounts
+                    <b>Optimized</b> backend development processes using GraphQL
+                    and Apollo Server, reducing the feedback-to-deployment cycle
+                    by 30%.
                   </li>
                   <li>
-                    Enhanced backend development processes, shortening
-                    feedback-to-deployment cycle
+                    <b>Developed</b> frontend applications using React and
+                    Next.js to improve user experience and performance.
                   </li>
                 </ul>
               </div>
@@ -113,12 +138,20 @@ export default function ResumePage() {
                 </p>
                 <ul className='mt-1 list-disc pl-5'>
                   <li>
-                    Developed Ruby on Rails-based backend for web-crawling and
-                    Sidekiq queue system
+                    <b>Developed</b> a robust backend system using Ruby on Rails
+                    and Sidekiq for web crawling and data processing.
                   </li>
                   <li>
-                    Transformed Excel-based dashboards into centralized,
-                    cloud-native application on AWS
+                    <b>Transformed</b> Excel-based dashboards into centralized,
+                    cloud-native applications hosted on AWS.
+                  </li>
+                  <li>
+                    <b>Integrated</b> APIs for seamless data exchange between
+                    internal tools and client applications.
+                  </li>
+                  <li>
+                    <b>Implemented</b> modern frontend technologies like React
+                    to enhance user interaction and data visualization.
                   </li>
                 </ul>
               </div>
@@ -129,15 +162,88 @@ export default function ResumePage() {
                 </p>
                 <ul className='mt-1 list-disc pl-5'>
                   <li>
-                    Employed AWS, Ruby on Rails, and Postgres for robust backend
-                    development
+                    <b>Engineered</b> a scalable backend using AWS, Ruby on
+                    Rails, and PostgreSQL for a market-leading rate shopping
+                    tool.
                   </li>
                   <li>
-                    Led backend optimization efforts for rate shopping tool
+                    <b>Designed</b> advanced web crawlers for real-time data
+                    collection of hotel rates.
                   </li>
                   <li>
-                    Designed advanced web crawler system for live rate data
-                    collection
+                    <b>Optimized</b> database queries and backend processes,
+                    improving data retrieval speed by 50%.
+                  </li>
+                  <li>
+                    <b>Led</b> the full-stack development efforts, enabling us
+                    to capture <b>5%</b> of the market in the first month.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 className='mb-2 border-b border-gray-300 pb-1 text-xl font-semibold'>
+              Projects
+            </h2>
+            <div className='space-y-4'>
+              <div>
+                <h3 className='font-semibold'>AI-Powered Support Chatbot</h3>
+                <ul className='mt-1 list-disc pl-5'>
+                  <li>
+                    Architected an AI chatbot using AWS Bedrock and Claude API
+                    to enhance customer support efficiency.
+                  </li>
+                  <li>
+                    Implemented a serverless architecture and integrated a
+                    vector database with AWS OpenSearch.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='font-semibold'>
+                  Monster Research Incorporated |{' '}
+                  <a
+                    href='https://www.monster-research.com'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-blue-600 hover:underline'
+                  >
+                    https://www.monster-research.com
+                  </a>
+                </h3>
+                <ul className='mt-1 list-disc pl-5'>
+                  <li>
+                    Developed a Next.js application that generates unique
+                    monsters using OpenAI&apos;s GPT and DALL-E.
+                  </li>
+                  <li>
+                    Implemented real-time features like leaderboards and user
+                    authentication with Clerk.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='font-semibold'>
+                  PhotoMuse: AI-Powered Image Search |{' '}
+                  <a
+                    href='https://rag.photomuse.ai'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-blue-600 hover:underline'
+                  >
+                    https://rag.photomuse.ai
+                  </a>
+                </h3>
+                <ul className='mt-1 list-disc pl-5'>
+                  <li>
+                    Created an image search application using Next.js, Azure
+                    services, and PostgreSQL with pgvector.
+                  </li>
+                  <li>
+                    Integrated AI technologies for image analysis and natural
+                    language querying.
                   </li>
                 </ul>
               </div>
